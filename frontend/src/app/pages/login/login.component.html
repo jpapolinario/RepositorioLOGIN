@@ -1,0 +1,35 @@
+<div style="max-width: 400px; margin: 50px auto; font-family: sans-serif;">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="fazerLogin()">
+    <div style="margin-bottom: 15px;">
+      <label for="email">E-mail:</label><br>
+      <input id="email" type="email" formControlName="email" style="width: 100%; padding: 8px;">
+      <small *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')" style="color: red;">
+        O e-mail é obrigatório.<br>
+      </small>
+      <small *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')" style="color: red;">
+        Informe um e-mail válido.
+      </small>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label for="senha">Senha:</label><br>
+      <input id="senha" type="password" formControlName="senha" style="width: 100%; padding: 8px;">
+      <small *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.hasError('required')" style="color: red;">
+        A senha é obrigatória.<br>
+      </small>
+      <small *ngIf="loginForm.get('senha')?.touched && loginForm.get('senha')?.hasError('pattern')" style="color: red;">
+        A senha deve ter no mínimo 8 dígitos, conter 1 número, 1 letra maiúscula, 1 letra minúscula e 1 caractere especial.
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid" style="padding: 10px 20px; cursor: pointer;">
+      Entrar
+    </button>
+  </form>
+
+  <p style="margin-top: 15px;">
+    Não tem uma conta? <a routerLink="/cadastro">Cadastre-se</a>
+  </p>
+</div>
