@@ -13,7 +13,7 @@ public class TipoPessoa {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "descricao", nullable = false, length = 256) // Configura a coluna: nome no banco, não aceita nulo, tamanho máximo 256
     private String descricao; // email e senha
@@ -24,17 +24,17 @@ public class TipoPessoa {
     public TipoPessoa() { // Construtor padrão obrigatório para o JPA funcionar por trás dos panos
     }
 
-    public TipoPessoa(Long id, String descricao, Boolean estado) { // Construtor completo para você instanciar objetos manualmente se precisar
+    public TipoPessoa(Integer id, String descricao, Boolean estado) { // Construtor completo para você instanciar objetos manualmente se precisar
         this.id = id;
         this.descricao = descricao;
         this.estado = estado;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id){
+    public void setId(Integer id){
         this.id = id;
     }
 

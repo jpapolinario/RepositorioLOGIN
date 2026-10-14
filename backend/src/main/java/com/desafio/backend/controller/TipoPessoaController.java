@@ -39,7 +39,7 @@ public class TipoPessoaController {
 
     // 3. ENDPOINT: ALTERAR (PUT http://localhost:8080/api/tipo-pessoa/5)
     @PutMapping("/{id}")
-    public TipoPessoa alterar(@PathVariable Long id, @RequestBody TipoPessoa dadosAtualizados) {
+    public TipoPessoa alterar(@PathVariable Integer id, @RequestBody TipoPessoa dadosAtualizados) {
         // @PathVariable captura o ID que veio na URL (ex: .../tipo-pessoa/5)
         return repository.findById(id).map(registro -> {
             registro.setDescricao(dadosAtualizados.getDescricao());
@@ -51,7 +51,7 @@ public class TipoPessoaController {
     // 4. ENDPOINT: EXCLUSÃO LÓGICA (PUT http://localhost:8080/api/tipo-pessoa/5/desativar)
     // Não apaga do banco, apenas muda o 'estado' para falso (excluído)
     @PutMapping("/{id}/desativar")
-    public TipoPessoa exclusaoLogica(@PathVariable Long id) {
+    public TipoPessoa exclusaoLogica(@PathVariable Integer id) {
         return repository.findById(id).map(registro -> {
             registro.setEstado(false); // Inativa o registro (Exclusão Lógica)
             return repository.save(registro);
@@ -61,7 +61,7 @@ public class TipoPessoaController {
     // 5. ENDPOINT: EXCLUSÃO FÍSICA (DELETE http://localhost:8080/api/tipo-pessoa/5)
     // Apaga definitivamente o registro do banco de dados
     @DeleteMapping("/{id}")
-    public String exclusaoFisica(@PathVariable Long id) {
+    public String exclusaoFisica(@PathVariable Integer id) {
         repository.deleteById(id); // Remove fisicamente do banco
         return "Registro deletado com sucesso do banco de dados!";
     }
