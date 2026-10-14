@@ -1,3 +1,4 @@
+//É a ponte que ensina o Java a gravar e buscar essa entidade no banco de dados.
 package com.desafio.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;

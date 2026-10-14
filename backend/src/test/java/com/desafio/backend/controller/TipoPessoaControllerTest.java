@@ -1,3 +1,4 @@
+//É onde definimos os endpoints HTTP que recebem o JSON da internet, chamam o repositório e devolvem a resposta.
 package com.desafio.backend.controller;
 
 // Importações especiais para testar as requisições HTTP de forma simples
