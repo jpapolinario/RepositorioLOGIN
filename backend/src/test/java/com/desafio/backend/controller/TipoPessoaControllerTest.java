@@ -1,4 +1,4 @@
-//É onde definimos os endpoints HTTP que recebem o JSON da internet, chamam o repositório e devolvem a resposta.
+//É onde definimos os endpoints HTTP que recebem o JSON da internet, chamam o repositório e devolvem a resposta. a validação integrada de toda a arquitetura sem depender de telas.
 package com.desafio.backend.controller;
 
 // Importações especiais para testar as requisições HTTP de forma simples

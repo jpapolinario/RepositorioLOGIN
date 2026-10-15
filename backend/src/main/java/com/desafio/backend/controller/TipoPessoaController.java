@@ -1,3 +1,4 @@
+//as portas de entrada da API REST e os verbos HTTP.
 package com.desafio.backend.controller;
 
 import java.util.List;

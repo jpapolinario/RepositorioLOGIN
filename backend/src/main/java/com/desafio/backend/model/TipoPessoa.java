@@ -1,4 +1,4 @@
-//Define como os dados existem na memória e como eles espelham as colunas do PostgreSQL.
+//Define como os dados existem na memória e como eles espelham as colunas do PostgreSQL. a estrutura dos dados e o espelho da tabela.
 package com.desafio.backend.model;
 
 import jakarta.persistence.Column; // Importa a configuração de colunas do banco

@@ -1,4 +1,4 @@
-//É a ponte que ensina o Java a gravar e buscar essa entidade no banco de dados.
+//É a ponte que ensina o Java a gravar e buscar essa entidade no banco de dados. a interface de comandos SQL via Spring Data JPA.
 package com.desafio.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
