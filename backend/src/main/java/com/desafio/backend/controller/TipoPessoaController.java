@@ -3,7 +3,6 @@ package com.desafio.backend.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +20,11 @@ import com.desafio.backend.repository.TipoPessoaRepository;
 @SuppressWarnings("null")
 public class TipoPessoaController {
 
-    @Autowired // Injeção de Dependência: O Spring entrega o Repository pronto para uso aqui dentro
-    private TipoPessoaRepository repository;
+    private final TipoPessoaRepository repository; //final não deixa o repository ser alterado ou apontado pra outro lugar
+
+    public TipoPessoaController(TipoPessoaRepository repository) {
+        this.repository = repository;
+    }
 
     // 1. ENDPOINT: LISTAR TODOS (GET http://localhost:8080/api/tipo-pessoa)
     @GetMapping
