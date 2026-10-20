@@ -23,7 +23,7 @@ public class ActionFigure {
     @ManyToOne // Várias Action Figures podem pertencer a um único Tipo de Anime
     //chave estrangeira
     @JoinColumn(name = "tipo_action_figure_id", nullable = false) // Crie a coluna de chave estrangeira no banco apontando para lá
-    private TipoActionFigure tipoActionFigure; // Aqui o TipoActionFigure é usado como tipo de dado! Guarda o objeto completo (ID, Descrição e Status)
+    private TipoActionFigure tipoActionFigure;
     //Quando dizemos que o tipo de dado é `TipoActionFigure`, significa que aquela variável vai carregar consigo todas as informações daquele anime, e não apenas um número.
 
     @Column(name = "excluido", nullable = false)
