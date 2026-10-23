@@ -1,3 +1,4 @@
+//model
 package com.desafio.backend.model;
 
 import jakarta.persistence.Column;
