@@ -1,4 +1,4 @@
-package com.desafio.backend.controller;
+package com.desafio.backend.controller.desafiosporfora;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desafio.backend.model.TipoActionFigure;
-import com.desafio.backend.repository.TipoActionFigureRepository;;
+import com.desafio.backend.model.desafiosporfora.TipoActionFigure;
+import com.desafio.backend.repository.desafiosporfora.TipoActionFigureRepository;;
 
 @RestController
 @RequestMapping("/api/tipo-action-figure")
 @SuppressWarnings("null")
 
 public class TipoActionFigureController {
-    
+
     private final TipoActionFigureRepository repository;
 
     public TipoActionFigureController(TipoActionFigureRepository repository) {
@@ -57,7 +57,7 @@ public class TipoActionFigureController {
             return repository.save(registro);
         }).orElseThrow(() -> new RuntimeException("Tipo de Action Figure não encontrado"));
     }
-    
+
     // 5. EXCLUSÃO FÍSICA
     @DeleteMapping("/{id}")
     public String exclusaoFisica(@PathVariable Integer id) {

@@ -1,5 +1,5 @@
 //as portas de entrada da API REST e os verbos HTTP.
-package com.desafio.backend.controller;
+package com.desafio.backend.controller.desafiosporfora;
 
 import java.util.List;
 
@@ -12,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desafio.backend.model.TipoPessoa;
-import com.desafio.backend.repository.TipoPessoaRepository;
+import com.desafio.backend.model.desafiosporfora.TipoPessoa;
+import com.desafio.backend.repository.desafiosporfora.TipoPessoaRepository;
 
-@RestController // Diz que esta classe é um Controlador de API Rest (retorna JSON automaticamente)
+@RestController // Diz que esta classe é um Controlador de API Rest (retorna JSON
+                // automaticamente)
 @RequestMapping("/api/tipo-pessoa") // Define a URL base (Endpoint principal) para este controlador
 @SuppressWarnings("null")
 public class TipoPessoaController {
 
-    private final TipoPessoaRepository repository; //final não deixa o repository ser alterado ou apontado pra outro lugar
+    private final TipoPessoaRepository repository; // final não deixa o repository ser alterado ou apontado pra outro
+                                                   // lugar
 
     public TipoPessoaController(TipoPessoaRepository repository) {
         this.repository = repository;
@@ -35,7 +37,8 @@ public class TipoPessoaController {
     // 2. ENDPOINT: CRIAR (POST http://localhost:8080/api/tipo-pessoa)
     @PostMapping
     public TipoPessoa criar(@RequestBody TipoPessoa novoTipo) {
-        // @RequestBody captura o JSON enviado pelo front-end e transforma em um objeto TipoPessoa
+        // @RequestBody captura o JSON enviado pelo front-end e transforma em um objeto
+        // TipoPessoa
         novoTipo.setEstado(true); // Garante que nasce ativo/excluído=falso
         return repository.save(novoTipo); // Salva no banco e retorna o objeto com o ID gerado
     }
@@ -51,7 +54,8 @@ public class TipoPessoaController {
         }).orElseThrow(() -> new RuntimeException("Registro não encontrado com o id: " + id));
     }
 
-    // 4. ENDPOINT: EXCLUSÃO LÓGICA (PUT http://localhost:8080/api/tipo-pessoa/5/desativar)
+    // 4. ENDPOINT: EXCLUSÃO LÓGICA (PUT
+    // http://localhost:8080/api/tipo-pessoa/5/desativar)
     // Não apaga do banco, apenas muda o 'estado' para falso (excluído)
     @PutMapping("/{id}/desativar")
     public TipoPessoa exclusaoLogica(@PathVariable Integer id) {

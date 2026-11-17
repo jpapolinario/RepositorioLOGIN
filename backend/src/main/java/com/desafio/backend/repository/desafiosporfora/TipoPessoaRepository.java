@@ -1,9 +1,9 @@
 //É a ponte que ensina o Java a gravar e buscar essa entidade no banco de dados. a interface de comandos SQL via Spring Data JPA.
-package com.desafio.backend.repository;
+package com.desafio.backend.repository.desafiosporfora;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.desafio.backend.model.TipoPessoa;
+import com.desafio.backend.model.desafiosporfora.TipoPessoa;
 
 public interface TipoPessoaRepository extends JpaRepository<TipoPessoa, Integer> {
     // Herdando de JpaRepository, o Spring já cria sozinho os métodos:

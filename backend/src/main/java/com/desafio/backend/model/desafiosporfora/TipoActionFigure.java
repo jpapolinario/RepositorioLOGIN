@@ -1,5 +1,5 @@
 //model
-package com.desafio.backend.model;
+package com.desafio.backend.model.desafiosporfora;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

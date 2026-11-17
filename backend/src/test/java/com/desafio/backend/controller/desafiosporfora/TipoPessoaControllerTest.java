@@ -1,5 +1,5 @@
 //É onde definimos os endpoints HTTP que recebem o JSON da internet, chamam o repositório e devolvem a resposta. a validação integrada de toda a arquitetura sem depender de telas.
-package com.desafio.backend.controller;
+package com.desafio.backend.controller.desafiosporfora;
 
 // Importações especiais para testar as requisições HTTP de forma simples
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -22,7 +22,7 @@ public class TipoPessoaControllerTest {
 
     @Test
     public void deveCriarEBuscarTipoPessoaComSucesso() throws Exception {
-        
+
         // 1. TESTANDO O ENDPOINT DE CRIAÇÃO (POST)
         // Criamos um JSON idêntico ao que o front-end enviaria
         String jsonEnvio = "{\"descricao\": \"Cliente VIP\"}";
@@ -39,6 +39,7 @@ public class TipoPessoaControllerTest {
         // Agora listamos para ver se o registro que acabamos de criar aparece lá
         mockMvc.perform(get("/api/tipo-pessoa"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].descricao").value("Cliente VIP")); // Garante que o primeiro item da lista é o que criamos
+                .andExpect(jsonPath("$[0].descricao").value("Cliente VIP")); // Garante que o primeiro item da lista é o
+                                                                             // que criamos
     }
 }

@@ -1,4 +1,4 @@
-package com.desafio.backend.controller;
+package com.desafio.backend.controller.desafiosporfora;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.desafio.backend.model.ActionFigure;
-import com.desafio.backend.model.TipoActionFigure;
-import com.desafio.backend.repository.ActionFigureRepository;
-import com.desafio.backend.repository.TipoActionFigureRepository;
+import com.desafio.backend.model.desafiosporfora.ActionFigure;
+import com.desafio.backend.model.desafiosporfora.TipoActionFigure;
+import com.desafio.backend.repository.desafiosporfora.ActionFigureRepository;
+import com.desafio.backend.repository.desafiosporfora.TipoActionFigureRepository;
 
 @RestController
 @RequestMapping("/api/action-figure")
@@ -24,7 +24,8 @@ public class ActionFigureController {
     private final ActionFigureRepository actionFigureRepository;
     private final TipoActionFigureRepository tipoActionFigureRepository;
 
-    public ActionFigureController(ActionFigureRepository actionFigureRepository, TipoActionFigureRepository tipoActionFigureRepository) {
+    public ActionFigureController(ActionFigureRepository actionFigureRepository,
+            TipoActionFigureRepository tipoActionFigureRepository) {
         this.actionFigureRepository = actionFigureRepository;
         this.tipoActionFigureRepository = tipoActionFigureRepository;
     }
@@ -41,7 +42,8 @@ public class ActionFigureController {
         // Valida se o ID do tipo enviado no JSON realmente existe no banco
         Integer tipoId = novaActionFigure.getTipoActionFigure().getId();
         TipoActionFigure tipoExistente = tipoActionFigureRepository.findById(tipoId)
-            .orElseThrow(() -> new RuntimeException("Tipo de Action Figure (Anime) com ID " + tipoId + " não encontrado!"));
+                .orElseThrow(() -> new RuntimeException(
+                        "Tipo de Action Figure (Anime) com ID " + tipoId + " não encontrado!"));
 
         // Associa o tipo completo validado ao produto e define como ativo
         novaActionFigure.setTipoActionFigure(tipoExistente);
@@ -55,12 +57,13 @@ public class ActionFigureController {
     public ActionFigure alterar(@PathVariable Integer id, @RequestBody ActionFigure dadosAtualizados) {
         return actionFigureRepository.findById(id).map(registro -> {
             registro.setNome(dadosAtualizados.getNome());
-            
+
             // Se o tipo também foi alterado, validamos se o novo tipo existe
             if (dadosAtualizados.getTipoActionFigure() != null) {
                 Integer novoTipoId = dadosAtualizados.getTipoActionFigure().getId();
                 TipoActionFigure tipoExistente = tipoActionFigureRepository.findById(novoTipoId)
-                    .orElseThrow(() -> new RuntimeException("Tipo de Action Figure com ID " + novoTipoId + " não encontrado!"));
+                        .orElseThrow(() -> new RuntimeException(
+                                "Tipo de Action Figure com ID " + novoTipoId + " não encontrado!"));
                 registro.setTipoActionFigure(tipoExistente);
             }
 
